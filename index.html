@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juicy World – Fresh Juice Bar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+        STICKY NAVIGATION BAR
+  ═══════════════════════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+
+      <!-- Logo -->
+      <a href="#home" class="nav-logo">
+        <div class="logo-wrapper">
+          <img src="images/logo.jfif" alt="Juicy World Logo" class="logo-img" />
+          <span class="logo-text">Juicy <span class="logo-accent">World</span></span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links" id="navLinks">
+        <a href="#home"    class="nav-link active">Home</a>
+        <a href="#menu"    class="nav-link">Menu</a>
+        <a href="#about"   class="nav-link">About Us</a>
+        <a href="#contact" class="nav-link">Contact Us</a>
+      </nav>
+
+      <!-- Right: Theme Toggle + Cart Trigger + CTA + Hamburger -->
+      <div class="nav-actions">
+        <!-- Dark / Light Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="toggle-track">
+            <span class="toggle-thumb">
+              <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1 1 0 011 1v1a1 1 0 01-2 0V3a1 1 0 011-1zm0 16a1 1 0 011 1v1a1 1 0 01-2 0v-1a1 1 0 011-1zM4.22 4.22a1 1 0 011.42 0l.7.7a1 1 0 01-1.42 1.42l-.7-.7a1 1 0 010-1.42zm13.44 13.44a1 1 0 011.42 0l.7.7a1 1 0 01-1.42 1.42l-.7-.7a1 1 0 010-1.42zM2 12a1 1 0 011-1h1a1 1 0 010 2H3a1 1 0 01-1-1zm16 0a1 1 0 011-1h1a1 1 0 010 2h-1a1 1 0 01-1-1zM4.22 19.78a1 1 0 010-1.42l.7-.7a1 1 0 011.42 1.42l-.7.7a1 1 0 01-1.42 0zm13.44-13.44a1 1 0 010-1.42l.7-.7a1 1 0 011.42 1.42l-.7.7a1 1 0 01-1.42 0zM12 7a5 5 0 110 10A5 5 0 0112 7z"/></svg>
+              <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+            </span>
+          </span>
+        </button>
+
+        <!-- Cart Trigger Button -->
+        <button class="cart-trigger" id="cartTrigger" aria-label="Open Shopping Cart">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+
+        <a href="#menu" class="btn-order">Order Now</a>
+
+        <!-- Mobile Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#home"    class="mob-link active">Home</a>
+      <a href="#menu"    class="mob-link">Menu</a>
+      <a href="#about"   class="mob-link">About Us</a>
+      <a href="#contact" class="mob-link">Contact Us</a>
+      <a href="#menu"    class="btn-order mob-cta">Order Now</a>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════
+        SIDE SLIDING CART DRAWER & OVERLAY
+  ═══════════════════════════════════════════ -->
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-modal" id="cartModal" aria-label="Shopping Cart Drawer">
+    <div class="cart-modal-header">
+      <h2>Your Cart <span id="modalCartCount">(0)</span></h2>
+      <button class="close-cart-btn" id="closeCartBtn" aria-label="Close Cart">&times;</button>
+    </div>
+    
+    <div class="cart-modal-body" id="cartModalBody">
+      <!-- Items dynamically populated via JavaScript -->
+    </div>
+
+    <div class="cart-modal-footer">
+      <button class="btn-primary full-width" id="checkoutBtn">Proceed to Checkout 🛍️</button>
+    </div>
+  </aside>
+
+
+  <!-- ═══════════════════════════════════════════
+        HERO SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <!-- Ambient 3D Glow Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Floating Fruit Slices, Leaves & Sparkles for 3D depth -->
+    <div class="hero-floating-elements" aria-hidden="true">
+      <span class="floating-item float-orange" data-speed="2.2">🍊</span>
+      <span class="floating-item float-leaf-1" data-speed="-1.6">🍃</span>
+      <span class="floating-item float-lemon" data-speed="1.8">🍋</span>
+      <span class="floating-item float-leaf-2" data-speed="-2.4">🌿</span>
+      <span class="floating-item float-sparkle" data-speed="1.4">✨</span>
+      <span class="floating-item float-drop" data-speed="-1.2">💧</span>
+    </div>
+
+    <div class="hero-container">
+      <!-- Left Column: Copy & CTA -->
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-pulse"></span>
+          <span>🌿 100% Organic &amp; Cold-Pressed</span>
+        </div>
+
+        <h1 class="hero-title">
+          Taste the <br />
+          <span class="hero-highlight">Freshness</span> <br />
+          in Every Drop <span class="hero-fruit-icons">🍊🍋🍉</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Handcrafted artisanal cold-pressed juices pressed daily from orchard-fresh fruits.
+          Zero added sugar, zero preservatives — pure vibrant energy in every sip.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#menu" class="btn-primary hero-btn-main">
+            <span>Explore Menu</span>
+            <span class="btn-icon">🍹</span>
+          </a>
+          <a href="#about" class="btn-ghost hero-btn-sub">
+            <span>Our Story</span>
+            <span class="btn-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">50<span class="plus">+</span></span>
+            <span class="stat-label">Juice Varieties</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">10K<span class="plus">+</span></span>
+            <span class="stat-label">Happy Customers</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">100<span class="plus">%</span></span>
+            <span class="stat-label">Cold-Pressed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Split Screen 3D Floating Showcase -->
+      <div class="hero-visual">
+        <div class="hero-3d-scene" id="hero3dScene">
+          <!-- Radiant Warm Aura -->
+          <div class="hero-glow-aura"></div>
+          <div class="hero-glow-ring"></div>
+
+          <!-- Main Drink Card Wrap -->
+          <div class="hero-img-wrap">
+            <div class="hero-card-frame">
+              <img src="images/lemonade.jfif" alt="Fresh Lemon Burst Cold-Pressed Juice" class="hero-main-img" />
+              <div class="hero-card-overlay"></div>
+            </div>
+
+            <!-- Glassmorphism Floating Badge 1: Top Right Product Details -->
+            <div class="float-card card-top">
+              <span class="card-emoji-box">🍋</span>
+              <div class="card-info">
+                <div class="card-header-row">
+                  <p class="card-name">Lemon Burst</p>
+                  <span class="card-badge-pill">Bestseller</span>
+                </div>
+                <p class="card-price">Rs. 450 <span class="card-sub">• Vitamin C ⚡</span></p>
+              </div>
+            </div>
+
+            <!-- Glassmorphism Floating Badge 2: Bottom Left Customer Reviews -->
+            <div class="float-card card-bottom">
+              <span class="card-emoji-box star-box">⭐</span>
+              <div class="card-info">
+                <p class="card-name">4.9 / 5 Rating</p>
+                <p class="card-sub">1,200+ Happy Sippers 🍹</p>
+              </div>
+            </div>
+
+            <!-- Glassmorphism Floating Badge 3: Side Tag -->
+            <div class="float-card card-side-pill">
+              <span class="card-pulse-dot"></span>
+              <span class="side-pill-text">Pressed Fresh Every Hour 🧊</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#menu" class="scroll-indicator" aria-label="Scroll to menu">
+      <span>Scroll Down</span>
+      <div class="scroll-dot"></div>
+    </a>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+        FEATURES STRIP
+  ═══════════════════════════════════════════ -->
+  <section class="features-strip">
+    <div class="features-container">
+      <div class="feature-pill">🌱 100% Organic Ingredients</div>
+      <div class="feature-pill">🧊 Cold-Pressed Technology</div>
+      <div class="feature-pill">🚫 No Preservatives</div>
+      <div class="feature-pill">🌍 Farm to Glass</div>
+      <div class="feature-pill">⚡ Nutrient Rich</div>
+      <div class="feature-pill">💚 Vegan Friendly</div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+        FEATURED MENU SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="menu-section" id="menu">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-badge">Our Menu</span>
+        <h2 class="section-title">Freshly Squeezed <span class="accent">Favorites</span></h2>
+        <p class="section-sub">Every glass is crafted with love, packed with vitamins and bursting with natural flavor.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="fresh">Fresh Juice</button>
+        <button class="tab" data-filter="smoothie">Smoothies</button>
+        <button class="tab" data-filter="special">Specials</button>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid">
+
+        <div class="menu-card" data-category="fresh">
+          <div class="card-img-wrap">
+            <img src="images/lemonade.jfif" alt="Lemonade" />
+            <span class="card-tag">Best Seller</span>
+          </div>
+          <div class="card-body">
+            <h3>Classic Lemonade</h3>
+            <p>Zesty lemons, honey &amp; a hint of mint – the ultimate refresher.</p>
+            <div class="card-footer">
+              <span class="price">Rs. 450</span>
+              <button class="btn-add" data-id="item-1" data-name="Classic Lemonade" data-price="450" data-img="images/lemonade.jfif">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-category="smoothie">
+          <div class="card-img-wrap">
+            <img src="images/strawberry (2).jfif" alt="Strawberry Smoothie" />
+            <span class="card-tag new">New</span>
+          </div>
+          <div class="card-body">
+            <h3>Strawberry Dream</h3>
+            <p>Velvety strawberries blended with coconut milk &amp; chia seeds.</p>
+            <div class="card-footer">
+              <span class="price">Rs. 650</span>
+              <button class="btn-add" data-id="item-2" data-name="Strawberry Dream" data-price="650" data-img="images/strawberry (2).jfif">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-category="fresh">
+          <div class="card-img-wrap">
+            <img src="images/watermellon.jfif" alt="Watermelon Juice" />
+          </div>
+          <div class="card-body">
+            <h3>Watermelon Splash</h3>
+            <p>Ice-cold watermelon pressed fresh with lime &amp; rock salt.</p>
+            <div class="card-footer">
+              <span class="price">Rs. 400</span>
+              <button class="btn-add" data-id="item-3" data-name="Watermelon Splash" data-price="400" data-img="images/watermellon.jfif">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-category="special">
+          <div class="card-img-wrap">
+            <img src="images/avacado.jfif" alt="Avocado Smoothie" />
+            <span class="card-tag">Chef's Pick</span>
+          </div>
+          <div class="card-body">
+            <h3>Avocado Bliss</h3>
+            <p>Creamy avocado, banana &amp; almond milk — a superfood powerhouse.</p>
+            <div class="card-footer">
+              <span class="price">Rs. 750</span>
+              <button class="btn-add" data-id="item-4" data-name="Avocado Bliss" data-price="750" data-img="images/avacado.jfif">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-category="special">
+          <div class="card-img-wrap">
+            <img src="images/faluda.jfif" alt="Faluda" />
+          </div>
+          <div class="card-body">
+            <h3>Rose Faluda</h3>
+            <p>Traditional rose milk with basil seeds, vermicelli &amp; ice cream.</p>
+            <div class="card-footer">
+              <span class="price">Rs. 700</span>
+              <button class="btn-add" data-id="item-5" data-name="Rose Faluda" data-price="700" data-img="images/faluda.jfif">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-category="smoothie">
+          <div class="card-img-wrap">
+            <img src="images/coffee.jfif" alt="Coffee Smoothie" />
+          </div>
+          <div class="card-body">
+            <h3>Mocha Cold Brew</h3>
+            <p>Bold cold brew coffee blended with cacao &amp; oat milk.</p>
+            <div class="card-footer">
+              <span class="price">Rs. 680</span>
+              <button class="btn-add" data-id="item-6" data-name="Mocha Cold Brew" data-price="680" data-img="images/coffee.jfif">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="menu-cta">
+        <a href="#menu" class="btn-primary">View Full Menu →</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+        ABOUT SNIPPET SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="about-section" id="about">
+    <div class="section-container about-grid">
+
+      <div class="about-visual">
+        <div class="about-img-wrap">
+          <img src="images/watermellon.jfif" alt="Fresh watermelon at Juicy World" class="about-main-img" />
+          <img src="images/strawberry (2).jfif" alt="Strawberry smoothie" class="about-secondary-img" />
+        </div>
+        <div class="about-badge-box">
+          <span class="big-num">5+</span>
+          <span class="big-label">Years of <br/>Freshness</span>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="section-badge">About Us</span>
+        <h2 class="section-title">We Pour <span class="accent">Passion</span> Into Every Glass</h2>
+        <p>
+          Born from a love of fresh, wholesome food, Juicy World started as a small
+          weekend stall. Today we're a beloved juice bar serving thousands of happy
+          customers across the city — but our philosophy has never changed:
+          <strong>real fruits, real flavours, real goodness.</strong>
+        </p>
+        <p>
+          We source directly from local organic farms, cold-press every juice to
+          preserve maximum nutrition, and refuse to add a single artificial ingredient.
+          Because you deserve the best.
+        </p>
+
+        <div class="about-perks">
+          <div class="perk">
+            <div class="perk-icon">🌾</div>
+            <div>
+              <strong>Farm Direct Sourcing</strong>
+              <p>Partnered with 20+ local organic farms.</p>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">🧪</div>
+            <div>
+              <strong>Nutritionist Approved</strong>
+              <p>Every recipe reviewed by certified nutritionists.</p>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">♻️</div>
+            <div>
+              <strong>Eco-Friendly Packaging</strong>
+              <p>100% biodegradable cups and straws.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+        TESTIMONIALS
+  ═══════════════════════════════════════════ -->
+  <section class="testimonials-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-badge">Testimonials</span>
+        <h2 class="section-title">What Our <span class="accent">Customers</span> Say</h2>
+      </div>
+
+      <div class="testimonials-track" id="testimonialsTrack">
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"The Avocado Bliss smoothie is life-changing! I grab one every morning before work. So thick, creamy and healthy!"</p>
+          <div class="testi-author">
+            <br>
+            <br>
+            <div>
+              <strong>Aisha Fernando</strong>
+              <span>Colombo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Juicy World is my go-to spot. The Rose Faluda is authentic and absolutely divine. Best I've had anywhere in the city!"</p>
+          <div class="testi-author">
+            <br>
+            <br>
+            <div>
+              <strong>Rohan Perera</strong>
+              <span>Kandy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">"Incredible flavors and you can actually taste that everything is fresh. The watermelon splash on a hot day is pure bliss."</p>
+          <div class="testi-author">
+            <br>
+            
+            <div>
+              <strong>Priya Silva</strong>
+              <span>Galle</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★☆</div>
+          <p class="testi-text">"Great variety, friendly staff, and super fast service. The eco-friendly packaging is a huge bonus. Will definitely be back!"</p>
+          <div class="testi-author">
+            <br>
+            <div>
+              <strong>Siddharth De Silva</strong>
+              <span>Negombo</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="testi-dots" id="testiDots"></div>
+    </div>
+  </section>
+
+
+  
+
+
+  <!-- ═══════════════════════════════════════════
+        CONTACT SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="contact-section" id="contact">
+    <div class="section-container contact-grid">
+
+      <div class="contact-info">
+        <span class="section-badge">Contact Us</span>
+        <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
+        <p>Have questions, feedback or a custom order? We'd love to hear from you!</p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <span class="ci-icon">📍</span>
+            <div>
+              <strong>Visit Us</strong>
+              <p>42, Main Street, Colombo 03, Sri Lanka</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">📞</span>
+            <div>
+              <strong>Call Us</strong>
+              <p>+94 11 234 5678</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">🕐</span>
+            <div>
+              <strong>Opening Hours</strong>
+              <p>Mon – Sat: 8 AM – 10 PM<br/>Sunday: 9 AM – 8 PM</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">✉️</span>
+            <div>
+              <strong>Email</strong>
+              <p>hello@juicyworld.lk</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-btn ig">Instagram</a>
+          <a href="#" class="social-btn fb">Facebook</a>
+          <a href="#" class="social-btn wa">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <form class="contact-form" id="contactForm" novalidate>
+        <h3>Send a Message</h3>
+
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="e.g. Priya Silva" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" placeholder="e.g. Bulk order enquiry" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" placeholder="Write your message here…" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary full-width">Send Message 📨</button>
+        <p class="form-success" id="formSuccess">✅ Message sent! We'll reply within 24 hours.</p>
+      </form>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+        FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-brand">
+        <div class="logo-wrapper">
+          <img src="images/logo.jfif" alt="Juicy World Logo" class="logo-img" />
+          <span class="logo-text">Juicy <span class="logo-accent">World</span></span>
+        </div>
+        <p>Pouring freshness into every glass since 2019. 🍊</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Menu</h4>
+        <a href="#">Fresh Juices</a>
+        <a href="#">Smoothies</a>
+        <a href="#">Specials</a>
+        <a href="#">Seasonal Picks</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">YouTube</a>
+        <a href="#">WhatsApp</a>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Juicy World. All rights reserved. Made with 🍊 &amp; ❤️</p>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════
+        SCROLL TO TOP BUTTON
+  ═══════════════════════════════════════════ -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
